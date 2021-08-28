@@ -1,0 +1,27 @@
+{
+  "name": "item-presentation-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git-codecommit.us-east-2.amazonaws.com/v1/repos/item-presentation-api"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.27.0",
+    "@aws-sdk/client-lambda": "^3.27.0",
+    "@hapi/hapi": "^20.1.5",
+    "dotenv-safe": "^8.2.0",
+    "hapi-lambda": "^1.0.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "ms": "^2.1.3",
+    "typescript": "^4.3.5"
+  }
+}

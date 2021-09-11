@@ -1,0 +1,182 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Item Presentation API
+
+servers:
+  - url: /api/v1
+
+tags:
+  - name: "health"
+    description: "Healthcheck"
+  - name: "items"
+    description: "Specific item created from a template with materials"
+  - name: "materials"
+    description: "Material selection for use in item creation"
+  - name: "templates"
+    description: "Item templates describing what can be made"
+
+paths:
+  /healthcheck:
+    get:
+      summary: Check the health of the api
+      tags:
+        - health
+      responses:
+        '200':
+          description: Service is healthy
+        default:
+          description: Service is unhealthy
+      operationId: healthcheck
+  /items:
+    get:
+      summary: Get items
+      tags:
+        - items
+      description: Gets all created items. In the future, this will likely be restricted.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+      operationId: getItems
+    put:
+      summary: Add a new item
+      tags:
+        - items
+      description: Add the newly created item.
+      requestBody:
+        description: The request body with item details.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Item"
+      responses:
+        '200':
+          description: Successful operation
+      operationId: addItem
+  /templates:
+    get:
+      summary: Get templates
+      tags:
+        - templates
+      description: Get a list of available item templates.
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ItemTemplate"
+      operationId: getTemplates
+    put:
+      summary: Add template
+      tags:
+        - templates
+      description: Add a new item template.
+      requestBody:
+        description: The request body with template details.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemTemplate"
+      responses:
+        '200':
+          description: Successful operation
+      operationId: addTemplate
+  /materials:
+    get:
+      tags:
+        - materials
+      summary: Get materials
+      description: Get all known materials.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Material"
+      operationId: getMaterials
+    put:
+      tags:
+        - materials
+      summary: Add material
+      description: Add a new material.
+      requestBody: 
+        description: The request body with material details.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Material"
+      responses:
+        '200':
+          description: Successful operation
+      operationId: addMaterial
+
+components:
+  schemas:
+    Material:
+      type: object
+      properties:
+        Name:
+          type: string
+        Category:
+          type: string
+        MeltingTemperature:
+          type: number
+        CraftingDifficulty:
+          type: number
+        Hardness:
+          type: number
+        Damage:
+          type: number
+        Armor:
+          type: number
+        Weight:
+          type: number
+    ItemTemplate:
+      type: object
+      properties:
+        Name:
+          type: string
+        Category:
+          type: string
+        Type:
+          type: string
+        BaseDice:
+          type: string
+        PanelsMetal:
+          type: number
+        PanelsWood:
+          type: number
+        Handedness:
+          type: string
+        AverageSize:
+          type: string
+    Item: 
+      type: object
+      properties:
+        Name:
+          type: string
+    Mitigation:
+      type: object
+      properties:
+        Type:
+          type: number
+          enum: [Slash, Blunt, Pierce]
+        Value:
+          type: number
+        
+    

@@ -9,11 +9,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators" : true,
     "baseUrl": ".",
-    "paths": {
-      "@hapi/podium": [
-        "node_modules/@types/hapi__podium"
-      ]
-    }
   },
   "lib": ["es2015"],
   "exclude": [

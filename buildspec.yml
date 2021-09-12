@@ -23,4 +23,4 @@ cache:
 artifacts:
   files:
     - '**/*'
-  name: items-presentation-api-$(date +%Y-%m-%d)
+  name: item-presentation-api-$(date +%Y-%m-%d)

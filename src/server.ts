@@ -1,8 +1,9 @@
 import express from 'express';
-import * as OpenApiValidator from 'express-openapi-validator'
-import {Express} from 'express-serve-static-core'
-import {connector, summarise} from 'swagger-routes-express'
-import YAML from 'yamljs'
+import * as OpenApiValidator from 'express-openapi-validator';
+import { Express } from 'express-serve-static-core';
+import swaggerUi from 'swagger-ui-express';
+import { connector, summarise } from 'swagger-routes-express';
+import YAML from 'yamljs';
 
 import * as controllers from './controllers';
 
@@ -21,7 +22,11 @@ export async function createServer(): Promise<Express> {
       validateResponses: true
     }
 
-    server.use(OpenApiValidator.middleware(validatorOptions))
+    server.use(OpenApiValidator.middleware(validatorOptions));
+    server.use(express.json());
+    server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDefinition, {
+      explorer: true
+    }));
 
     server.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
       res.status(err.status).json({

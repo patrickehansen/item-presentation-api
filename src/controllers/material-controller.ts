@@ -1,8 +1,11 @@
 import * as express from 'express';
+import * as service from '../services/material-service';
 
-export function getMaterials(req: express.Request, res: express.Response) {
+export async function getMaterials(req: express.Request, res: express.Response) {
   try {
+    const materials = await service.getMaterials();
 
+    res.send(materials);
   } catch (err) {
     console.error('materials::controller::getMaterials::error', err);
     res.status(500);
@@ -10,9 +13,13 @@ export function getMaterials(req: express.Request, res: express.Response) {
   }
 }
 
-export function addMaterial(req: express.Request, res: express.Response) {
+export async function addMaterial(req: express.Request, res: express.Response) {
   try {
+    const material = req.body;
 
+    await service.addMaterial(material);
+
+    res.send();
   } catch (err) {
     console.error('materials::controller::addMaterial::error', err);
     res.status(500);

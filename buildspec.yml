@@ -11,6 +11,7 @@ phases:
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
+      - n latest
       - echo Build started on `date`
       - npm run build
       - npm test

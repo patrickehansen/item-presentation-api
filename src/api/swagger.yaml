@@ -170,6 +170,24 @@ components:
       properties:
         Name:
           type: string
+        Category:
+          type: string;
+        Type:
+          type: string;
+        DamageRol:
+          type: string;
+        Weight:
+          type: number;
+        Armor:
+          type: array
+          items:
+            $ref: "#/components/schemas/Mitigation"
+        Location:
+          type: string;
+        Layer:
+          type: string;
+        Notes:
+          type: string;
     Mitigation:
       type: object
       properties:

@@ -8,14 +8,17 @@ import YAML from 'yamljs';
 import * as controllers from './controllers';
 
 const yamlPath = './src/api/swagger.yaml'
+let server;
 
 export async function createServer(): Promise<Express> {
   try {
+    if (server) return server;
+    
     const apiDefinition = YAML.load(yamlPath)
     const apiSummary = summarise(apiDefinition)
     console.info(apiSummary)
 
-    const server = express();
+    server = express();
     const validatorOptions = {
       apiSpec: yamlPath,
       validateRequests: true,

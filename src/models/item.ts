@@ -6,6 +6,9 @@ export interface Item {
   DamageRoll: string;
   Weight: number;
   Armor: Mitigation[];
+  Location: string;
+  Layer: string;
+  Notes: string;
 }
 
 export interface Mitigation {

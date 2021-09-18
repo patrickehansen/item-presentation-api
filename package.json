@@ -2,11 +2,12 @@
   "name": "item-presentation-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "mocha --require ts-node/register --require=dotenv/config --watch",
     "build": "tsc",
-    "dev": "ts-node ./src/index.ts"
+    "dev": "ts-node ./src/index.ts",
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",

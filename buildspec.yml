@@ -16,14 +16,13 @@ phases:
       - npm prune --production
   post_build:
     commands:
-      - echo Build completed on `date`
+      - mv dist/**/* ./
+      - mv dist/* ./
+      - rm -r dist *.yml src .* README* tsconfig.json
 cache:
   paths:
     - 'node_modules/**/*'
 artifacts:
   files:
-    - 'dist/**/*'
-    - package.json
-    - package-lock.json
-    - node_modules/**/*
+    - '**/*'
   name: item-presentation-api-$(date +%Y-%m-%d)

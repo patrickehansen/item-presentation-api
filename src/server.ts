@@ -25,6 +25,10 @@ export async function createServer(): Promise<Express> {
       validateResponses: true
     }
 
+    server.use((req, res, next) => {
+      console.log('incoming request', req);
+      next()
+    })
     server.use(OpenApiValidator.middleware(validatorOptions));
     server.use(express.json());
     server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDefinition, {

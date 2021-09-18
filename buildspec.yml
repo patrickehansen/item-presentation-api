@@ -16,9 +16,8 @@ phases:
       - npm prune --production
   post_build:
     commands:
-      - mv dist/**/* ./
-      - mv dist/* ./
-      - rm -r dist *.yml src .* README* tsconfig.json
+      - cp -r dist/* .
+      - rm -r dist *.yml src .env* README* *.json .git* Dockerfile 
 cache:
   paths:
     - 'node_modules/**/*'

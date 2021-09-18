@@ -7,7 +7,7 @@ import YAML from 'yamljs';
 
 import * as controllers from './controllers';
 
-const yamlPath = './src/api/swagger.yaml'
+const yamlPath = './api/swagger.yaml'
 let server;
 
 export async function createServer(): Promise<Express> {

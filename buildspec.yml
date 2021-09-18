@@ -17,7 +17,7 @@ phases:
   post_build:
     commands:
       - cp -r dist/* .
-      - rm -r dist *.yml src .env* README* *.json .git* Dockerfile 
+      - rm -r dist *.yml src .env* README* tsconfig.json .git* Dockerfile .vscode*
 cache:
   paths:
     - 'node_modules/**/*'

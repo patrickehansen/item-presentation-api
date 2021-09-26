@@ -1,4 +1,4 @@
-import awsServerlessExpress from '@vendia/serverless-express';
+import { configure as  awsServerlessExpress } from '@vendia/serverless-express';
 import { createServer } from './server';
 
 let serverlessExpressInstance

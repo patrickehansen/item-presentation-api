@@ -1,9 +1,19 @@
-import awsServerlessExpress from 'aws-serverless-express';
+import awsServerlessExpress from '@vendia/serverless-express';
 import { createServer } from './server';
 
-const server = awsServerlessExpress.createServer(createServer())
+let serverlessExpressInstance
 
-export const handler = (event, context) => {
-  console.log("event", event) 
-  awsServerlessExpress.proxy(server, event, context)
+async function setup (event, context) {
+  const app = await createServer()
+
+  serverlessExpressInstance = awsServerlessExpress({ app })
+  return serverlessExpressInstance(event, context)
 }
+
+function handler (event, context) {
+  if (serverlessExpressInstance) return serverlessExpressInstance(event, context)
+
+  return setup(event, context)
+}
+
+exports.handler = handler;

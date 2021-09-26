@@ -4,7 +4,7 @@ info:
   title: Item Presentation API
 
 servers:
-  - url: /api/v1
+  - url: /v1
 
 tags:
   - name: "health"

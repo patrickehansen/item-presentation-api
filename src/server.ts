@@ -2,11 +2,14 @@ import express from 'express';
 import * as OpenApiValidator from 'express-openapi-validator';
 import { Express } from 'express-serve-static-core';
 import swaggerUi from 'swagger-ui-express';
+import cors from 'cors'
 import { connector, summarise } from 'swagger-routes-express';
-import YAML from 'yamljs';
+import YAML from 'yamljs'
+import config from './config'
 
 import * as controllers from './controllers';
 
+// morgan 
 const yamlPath = './api/swagger.yaml'
 let server;
 
@@ -29,6 +32,18 @@ export async function createServer(): Promise<Express> {
       console.log('incoming request', req);
       next()
     })
+
+    if (config.env !== 'lambda') {
+      server.use(cors({
+        optionsSuccessStatus: 200,
+        credentials: true,
+        origin: (origin: any, callback: any) => {
+          callback(undefined, true)
+        }
+      }))
+    }
+    
+
     server.use(OpenApiValidator.middleware(validatorOptions));
     server.use(express.json());
     server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDefinition, {
@@ -50,7 +65,7 @@ export async function createServer(): Promise<Express> {
         console.log(`${method}: ${descriptor[0]} : ${(descriptor[1] as any).name}`)
       }
     })
-  
+
     connect(server)
 
     return server;

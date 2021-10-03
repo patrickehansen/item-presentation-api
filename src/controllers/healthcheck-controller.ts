@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-export function healthcheck(req: express.Request, res: express.Response) {
+export function healthcheck(_: express.Request, res: express.Response) {
   console.log('healthcheck::starting execution')
   res.end('OK')
   console.log('healthcheck::successful execution')

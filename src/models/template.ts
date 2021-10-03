@@ -1,5 +1,5 @@
 export interface ItemTemplate {
-  TemplateID: string;
+  TemplateID?: string;
   Name: string;
   Category: string;
   Type: string;

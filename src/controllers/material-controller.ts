@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as service from '../services/material-service';
 
-export async function getMaterials(req: express.Request, res: express.Response) {
+export async function getMaterials(_: express.Request, res: express.Response) {
   try {
     const materials = await service.getMaterials();
 

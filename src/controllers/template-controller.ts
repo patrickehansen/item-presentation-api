@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as service from '../services/template-service';
 
-export async function getTemplates(req: express.Request, res: express.Response) {
+export async function getTemplates(_: express.Request, res: express.Response) {
   try {
     const templates = await service.getTemplates();
 

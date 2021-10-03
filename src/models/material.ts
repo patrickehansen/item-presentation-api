@@ -1,5 +1,5 @@
 export interface Material {
-  MaterialID: string;
+  MaterialID?: string;
   Name: string;
   Category: string;
   MeltingTemperature: number;

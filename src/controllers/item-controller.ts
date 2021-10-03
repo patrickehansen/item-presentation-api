@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as service from '../services/item-service';
 
-export async function getItems(req: express.Request, res: express.Response) {
+export async function getItems(_: express.Request, res: express.Response) {
   try {
     const items = await service.getItems();
 

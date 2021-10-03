@@ -8,11 +8,11 @@ export async function getMaterials(): Promise<Material[]> {
       TableName: 'Materials',
     };
 
-    const scanResults = [];
+    const scanResults: any[] = [];
     let items;
     do{
       items =  await client.scan(params).promise();
-      items.Items.forEach((item) => scanResults.push(item));
+      (items.Items || []).forEach((item) => scanResults.push(item));
       params.ExclusiveStartKey = items.LastEvaluatedKey;
     }while(typeof items.LastEvaluatedKey !== "undefined");
     

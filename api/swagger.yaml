@@ -43,6 +43,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Item"
+        '400':
+          description: Bad request. User ID must be an integer and larger than 0
       operationId: getItems
     put:
       summary: Add a new item

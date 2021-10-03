@@ -1,5 +1,5 @@
 export interface Item {
-  ItemID: string;
+  ItemID?: string;
   Name: string;
   Category: string;
   Type: string;

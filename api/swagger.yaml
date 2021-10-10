@@ -237,19 +237,7 @@ components:
           type: string
         Type:
           type: string
-        DamageRol:
-          type: string
-        Weight:
-          type: number
-        Armor:
-          type: array
-          items:
-            $ref: "#/components/schemas/Mitigation"
-        Location:
-          type: string
-        Layer:
-          type: string
-        Notes:
+        Damage:
           type: string
     Mitigation:
       type: object

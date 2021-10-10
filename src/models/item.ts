@@ -3,12 +3,7 @@ export interface Item {
   Name: string;
   Category: string;
   Type: string;
-  DamageRoll: string;
-  Weight: number;
-  Armor: Mitigation[];
-  Location: string;
-  Layer: string;
-  Notes: string;
+  Damage: string;
 }
 
 export interface Mitigation {

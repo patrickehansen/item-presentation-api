@@ -43,8 +43,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Item"
-        '400':
-          description: Bad request. User ID must be an integer and larger than 0
       operationId: getItems
     put:
       summary: Add a new item
@@ -94,6 +92,32 @@ paths:
         '200':
           description: Successful operation
       operationId: addTemplate
+  /templates/{id}:
+    delete:
+      tags:
+        - templates
+      summary: Delete template
+      description: Delete a template.
+      responses:
+        '200':
+          description: Successful operation
+      operationId: deleteTemplate
+    patch:
+      tags:
+        - templates
+      summary: Edit template
+      description: Edit a new template with new attributes.
+      requestBody: 
+        description: The request body with template details.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemTemplate"
+      responses:
+        '200':
+          description: Successful operation
+      operationId: editTemplate
   /materials:
     get:
       tags:
@@ -126,6 +150,38 @@ paths:
         '200':
           description: Successful operation
       operationId: addMaterial
+  /materials/{id}:
+    delete:
+      tags:
+        - materials
+      summary: Delete material
+      description: Delete a material.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Material"
+      operationId: deleteMaterial
+    patch:
+      tags:
+        - materials
+      summary: Edit material
+      description: Edit a new material with new attributes.
+      requestBody: 
+        description: The request body with material details.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Material"
+      responses:
+        '200':
+          description: Successful operation
+      operationId: editMaterial
 
 components:
   schemas:
@@ -159,14 +215,19 @@ components:
           type: string
         BaseDice:
           type: string
-        PanelsMetal:
-          type: number
-        PanelsWood:
-          type: number
         Handedness:
           type: string
         AverageSize:
           type: string
+        Requirements:
+          type: array
+          items:
+            type: object
+            properties:
+              Type:
+                type: string
+              Count:
+                type: number
     Item: 
       type: object
       properties:

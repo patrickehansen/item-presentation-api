@@ -1,11 +1,16 @@
+export interface ItemTemplateRequirement {
+  Type: string;
+  Count: number;
+}
+
 export interface ItemTemplate {
   TemplateID?: string;
   Name: string;
   Category: string;
   Type: string;
   BaseDice: string;
-  PanelsMetal: number;
-  PanelsWood: number;
   Handedness: string;
-  AverageSize: string;
+  Size: string;
+  ProductionTime: string;
+  Requirements: ItemTemplateRequirement[];
 }

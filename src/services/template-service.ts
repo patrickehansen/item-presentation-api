@@ -20,3 +20,22 @@ export async function addTemplate(template: ItemTemplate): Promise<void> {
     throw err;
   }
 }
+
+
+export async function editTemplate(id: string, template: ItemTemplate) {
+  try {
+    await manager.editTemplate(id, template);
+  } catch (err) {
+    console.error('materials::service::editTemplate::error', err);
+    throw err;
+  }
+}
+
+export async function deleteTemplate(id: string) {
+  try {
+     await manager.deleteTemplate(id as string);
+  } catch (err) {
+    console.error('materials::service::deleteTemplate::error', err);
+    throw err;
+  }
+}

@@ -6,10 +6,13 @@ custom:
   region: ${opt:region, 'us-east-1'}
   bundle:
     linting: false
+    copyFiles:
+      - from: 'api/'
+        to: './src/api'
   serverless-offline:
     httpPort: 4000
     noPrependStageInUrl: true
-
+    
 provider:
   name: aws
   runtime: nodejs14.x
@@ -34,8 +37,12 @@ functions:
 
 package:
   individually: true
+  patterns:
+    - '.env.example'
+    - 'api/swagger.yaml'
 
 plugins:
   - serverless-dotenv-plugin
   - serverless-bundle
   - serverless-offline
+  - serverless-dotenv

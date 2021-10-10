@@ -12,7 +12,7 @@
         "<node_internals>/**"
       ],
       "preLaunchTask":"npm: build",
-      "program": "${workspaceFolder}\\src\\index.ts",
+      "program": "${workspaceFolder}\\local.ts",
       "outFiles": [
         "${workspaceFolder}/**/*.js"
       ]
@@ -30,6 +30,19 @@
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
-  },
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "name": "Serverless",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "debug"
+      ],
+      "port": 9229
+    }
+  
   ]
 }

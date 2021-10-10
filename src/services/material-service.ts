@@ -12,11 +12,31 @@ export async function getMaterials(): Promise<Material[]> {
   }
 }
 
-export async function addMaterial(material: Material): Promise<void> {
+export async function addMaterial(material: Material): Promise<Material> {
   try {
-    await manager.addMaterial(material);
+    const added = await manager.addMaterial(material);
+
+    return added;
   } catch (err) {
     console.error('materials::service::addMaterial::error', err);
+    throw err;
+  }
+}
+
+export async function editMaterial(id: string, material: Material): Promise<void> {
+  try {
+    await manager.editMaterial(id, material);
+  } catch (err) {
+    console.error('materials::service::editMaterial::error', err);
+    throw err;
+  }
+}
+
+export async function deleteMaterial(id: string): Promise<void> {
+  try {
+    await manager.deleteMaterial(id);
+  } catch (err) {
+    console.error('materials::service::deleteMaterial::error', err);
     throw err;
   }
 }

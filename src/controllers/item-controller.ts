@@ -5,7 +5,7 @@ export async function getItems(_: express.Request, res: express.Response) {
   try {
     const items = await service.getItems();
 
-    res.send(items);
+    res.status(200).send(items);
   } catch (err) {
     console.error('items::controller::getItems::error', err);
     res.status(500);
@@ -19,7 +19,7 @@ export async function addItem(req: express.Request, res: express.Response) {
 
     await service.addItem(item);
 
-    res.send();
+    res.status(200).send();
   } catch (err) {
     console.error('items::controller::addItem::error', err);
     res.status(500);
